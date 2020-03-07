@@ -102,7 +102,7 @@ while(count < 9):
     count += 1
 
 if(not check_for_winner(ttboard)):
-    print("The game is a CAT!")
+    print('The game is a CAT!  =^..^= (")(")')
 
     
 
