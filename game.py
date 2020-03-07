@@ -19,12 +19,17 @@ def check_for_winner(board):
     #Three vertical win possibilties
     elif(board[0][0] == board[1][0] == board[2][0] and board[0][0] != '_') or (board[0][1] == board[1][1] == board[2][1] and board[0][1] != '_') or (board[0][2] == board[1][2] == board[2][2] and board[0][2] != '_'):
         return True
-    #Two diagnols
+    #Two diagnol win possibilities
     elif(board[0][0] == board[1][1] == board[2][2] and board[0][0] != '_') or (board[0][2] == board[1][1] == board[2][0] and board[0][2] != '_'):
         return True
     else:
         return False
 
+def spotFree(x, y, board):
+    if(board[x][y] != "_"):
+        return False
+    else:
+        return True
 
 
 #counter to keep track of turns
@@ -34,10 +39,17 @@ print_board(ttboard)
 while(count < 9):
     print("Your turn", player)
     print()
-    
-    
+    not_taken = True
     x = int (input("Please input your x coordinate: "))
     y = int (input("Please input your y coordinate: "))
+    print()
+    not_taken = spotFree(x, y, ttboard)
+    while(not not_taken):
+        x = int (input("Please input an x coordinate that hasn't already been played: "))
+        y = int (input("Please input your y coordinate that hasn't already been played: "))
+        print()
+
+    
     print()
     if(player == "Player 1"):
         ttboard[x][y] = "X"
